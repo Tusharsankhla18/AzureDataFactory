@@ -23,6 +23,14 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'CustomerData'"
 		},
+		"CustomerDataWrk_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'CustomerDataWrk'"
+		},
+		"Customerdataj_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'Customerdataj'"
+		},
 		"AdvwrkDB_properties_typeProperties_server": {
 			"type": "string",
 			"defaultValue": "adftusharserver.database.windows.net"
@@ -44,6 +52,18 @@
 			"defaultValue": "adf-ts-db"
 		},
 		"CusotmerDatawork_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "Tusharadf"
+		},
+		"CustomerDataWrk_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "adftusharserver.database.windows.net"
+		},
+		"CustomerDataWrk_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "adf-ts-db"
+		},
+		"CustomerDataWrk_properties_typeProperties_userName": {
 			"type": "string",
 			"defaultValue": "Tusharadf"
 		},
@@ -86,6 +106,12 @@
 					"CustomerData_connectionString": {
 						"value": "[parameters('CustomerData_connectionString')]"
 					},
+					"CustomerDataWrk_password": {
+						"value": "[parameters('CustomerDataWrk_password')]"
+					},
+					"Customerdataj_connectionString": {
+						"value": "[parameters('Customerdataj_connectionString')]"
+					},
 					"AdvwrkDB_properties_typeProperties_server": {
 						"value": "[parameters('AdvwrkDB_properties_typeProperties_server')]"
 					},
@@ -103,6 +129,15 @@
 					},
 					"CusotmerDatawork_properties_typeProperties_userName": {
 						"value": "[parameters('CusotmerDatawork_properties_typeProperties_userName')]"
+					},
+					"CustomerDataWrk_properties_typeProperties_server": {
+						"value": "[parameters('CustomerDataWrk_properties_typeProperties_server')]"
+					},
+					"CustomerDataWrk_properties_typeProperties_database": {
+						"value": "[parameters('CustomerDataWrk_properties_typeProperties_database')]"
+					},
+					"CustomerDataWrk_properties_typeProperties_userName": {
+						"value": "[parameters('CustomerDataWrk_properties_typeProperties_userName')]"
 					}
 				}
 			},

@@ -17,6 +17,12 @@
 		"CustomerData_connectionString": {
 			"value": ""
 		},
+		"CustomerDataWrk_password": {
+			"value": ""
+		},
+		"Customerdataj_connectionString": {
+			"value": ""
+		},
 		"AdvwrkDB_properties_typeProperties_server": {
 			"value": "adftusharserver.database.windows.net"
 		},
@@ -33,6 +39,15 @@
 			"value": "adf-ts-db"
 		},
 		"CusotmerDatawork_properties_typeProperties_userName": {
+			"value": "Tusharadf"
+		},
+		"CustomerDataWrk_properties_typeProperties_server": {
+			"value": "adftusharserver.database.windows.net"
+		},
+		"CustomerDataWrk_properties_typeProperties_database": {
+			"value": "adf-ts-db"
+		},
+		"CustomerDataWrk_properties_typeProperties_userName": {
 			"value": "Tusharadf"
 		},
 		"containerUri": {
