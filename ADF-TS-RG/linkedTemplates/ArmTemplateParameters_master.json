@@ -11,6 +11,12 @@
 		"BlobStoreProd_connectionString": {
 			"value": ""
 		},
+		"CusotmerDatawork_password": {
+			"value": ""
+		},
+		"CustomerData_connectionString": {
+			"value": ""
+		},
 		"AdvwrkDB_properties_typeProperties_server": {
 			"value": "adftusharserver.database.windows.net"
 		},
@@ -18,6 +24,15 @@
 			"value": "adf-ts-db"
 		},
 		"AdvwrkDB_properties_typeProperties_userName": {
+			"value": "Tusharadf"
+		},
+		"CusotmerDatawork_properties_typeProperties_server": {
+			"value": "adftusharserver.database.windows.net"
+		},
+		"CusotmerDatawork_properties_typeProperties_database": {
+			"value": "adf-ts-db"
+		},
+		"CusotmerDatawork_properties_typeProperties_userName": {
 			"value": "Tusharadf"
 		},
 		"containerUri": {

@@ -15,6 +15,14 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'BlobStoreProd'"
 		},
+		"CusotmerDatawork_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'CusotmerDatawork'"
+		},
+		"CustomerData_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'CustomerData'"
+		},
 		"AdvwrkDB_properties_typeProperties_server": {
 			"type": "string",
 			"defaultValue": "adftusharserver.database.windows.net"
@@ -24,6 +32,18 @@
 			"defaultValue": "adf-ts-db"
 		},
 		"AdvwrkDB_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "Tusharadf"
+		},
+		"CusotmerDatawork_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "adftusharserver.database.windows.net"
+		},
+		"CusotmerDatawork_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "adf-ts-db"
+		},
+		"CusotmerDatawork_properties_typeProperties_userName": {
 			"type": "string",
 			"defaultValue": "Tusharadf"
 		},
@@ -60,6 +80,12 @@
 					"BlobStoreProd_connectionString": {
 						"value": "[parameters('BlobStoreProd_connectionString')]"
 					},
+					"CusotmerDatawork_password": {
+						"value": "[parameters('CusotmerDatawork_password')]"
+					},
+					"CustomerData_connectionString": {
+						"value": "[parameters('CustomerData_connectionString')]"
+					},
 					"AdvwrkDB_properties_typeProperties_server": {
 						"value": "[parameters('AdvwrkDB_properties_typeProperties_server')]"
 					},
@@ -68,6 +94,15 @@
 					},
 					"AdvwrkDB_properties_typeProperties_userName": {
 						"value": "[parameters('AdvwrkDB_properties_typeProperties_userName')]"
+					},
+					"CusotmerDatawork_properties_typeProperties_server": {
+						"value": "[parameters('CusotmerDatawork_properties_typeProperties_server')]"
+					},
+					"CusotmerDatawork_properties_typeProperties_database": {
+						"value": "[parameters('CusotmerDatawork_properties_typeProperties_database')]"
+					},
+					"CusotmerDatawork_properties_typeProperties_userName": {
+						"value": "[parameters('CusotmerDatawork_properties_typeProperties_userName')]"
 					}
 				}
 			},
