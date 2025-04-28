@@ -4,6 +4,21 @@
 	"parameters": {
 		"factoryName": {
 			"value": "ADF-TS-RG"
+		},
+		"AdvwrkDB_password": {
+			"value": ""
+		},
+		"BlobStoreProd_connectionString": {
+			"value": ""
+		},
+		"AdvwrkDB_properties_typeProperties_server": {
+			"value": "adftusharserver.database.windows.net"
+		},
+		"AdvwrkDB_properties_typeProperties_database": {
+			"value": "adf-ts-db"
+		},
+		"AdvwrkDB_properties_typeProperties_userName": {
+			"value": "Tusharadf"
 		}
 	}
 }
