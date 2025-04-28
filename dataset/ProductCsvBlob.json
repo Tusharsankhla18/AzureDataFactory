@@ -10,9 +10,10 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
+				"fileName": "ProductList",
 				"container": "products"
 			},
-			"columnDelimiter": ",",
+			"columnDelimiter": "Comma(,)",
 			"escapeChar": "\\",
 			"firstRowAsHeader": true,
 			"quoteChar": "\""
