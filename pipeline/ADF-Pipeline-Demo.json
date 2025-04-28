@@ -1,0 +1,17 @@
+{
+	"name": "ADF-Pipeline-Demo",
+	"properties": {
+		"activities": [
+			{
+				"name": "Demo-wait",
+				"type": "Wait",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"waitTimeInSeconds": 1
+				}
+			}
+		],
+		"annotations": []
+	}
+}
