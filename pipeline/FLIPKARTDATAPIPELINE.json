@@ -20,43 +20,17 @@
 						"storeSettings": {
 							"type": "AzureBlobStorageReadSettings",
 							"recursive": true,
-							"wildcardFolderPath": "input",
-							"wildcardFileName": "*Flipkart.csv",
 							"enablePartitionDiscovery": false
 						},
 						"formatSettings": {
 							"type": "DelimitedTextReadSettings"
 						}
 					},
-					"sink": {
-						"type": "ParquetSink",
-						"storeSettings": {
-							"type": "AzureBlobStorageWriteSettings",
-							"copyBehavior": "MergeFiles"
-						},
-						"formatSettings": {
-							"type": "ParquetWriteSettings"
-						}
-					},
-					"enableStaging": false,
-					"translator": {
-						"type": "TabularTranslator",
-						"typeConversion": true,
-						"typeConversionSettings": {
-							"allowDataTruncation": true,
-							"treatBooleanAsNumber": false
-						}
-					}
+					"enableStaging": false
 				},
 				"inputs": [
 					{
 						"referenceName": "Flipkartdata",
-						"type": "DatasetReference"
-					}
-				],
-				"outputs": [
-					{
-						"referenceName": "FlipkartPqt",
 						"type": "DatasetReference"
 					}
 				]
