@@ -55,7 +55,7 @@
 				]
 			},
 			{
-				"name": "dftripdataTs",
+				"name": "dataflow3",
 				"type": "ExecuteDataFlow",
 				"dependsOn": [
 					{
@@ -75,7 +75,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "dftripdataTs",
+						"referenceName": "dataflow3",
 						"type": "DataFlowReference"
 					},
 					"compute": {
