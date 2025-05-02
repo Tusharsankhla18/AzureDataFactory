@@ -7,9 +7,17 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "ADF-TS-RG"
 		},
+		"ADLSGen2_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'ADLSGen2'"
+		},
 		"AdvwrkDB_password": {
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'AdvwrkDB'"
+		},
+		"AzureDataLakeStorage1_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'AzureDataLakeStorage1'"
 		},
 		"BlobStoreProd_connectionString": {
 			"type": "secureString",
@@ -31,6 +39,18 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'Customerdataj'"
 		},
+		"TaxiTripDbTs_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'TaxiTripDbTs'"
+		},
+		"ADLSTaxitrip_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'ADLSTaxitrip'"
+		},
+		"ADLSGen2_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adftusharsa.dfs.core.windows.net/"
+		},
 		"AdvwrkDB_properties_typeProperties_server": {
 			"type": "string",
 			"defaultValue": "adftusharserver.database.windows.net"
@@ -42,6 +62,10 @@
 		"AdvwrkDB_properties_typeProperties_userName": {
 			"type": "string",
 			"defaultValue": "Tusharadf"
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://tstmstorageacc18.dfs.core.windows.net/"
 		},
 		"CusotmerDatawork_properties_typeProperties_server": {
 			"type": "string",
@@ -66,6 +90,22 @@
 		"CustomerDataWrk_properties_typeProperties_userName": {
 			"type": "string",
 			"defaultValue": "Tusharadf"
+		},
+		"TaxiTripDbTs_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "adftusharserver.database.windows.net"
+		},
+		"TaxiTripDbTs_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "taxi-data"
+		},
+		"TaxiTripDbTs_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "Tusharadf"
+		},
+		"ADLSTaxitrip_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://tstmstorageacc18.dfs.core.windows.net/"
 		},
 		"containerUri": {
 			"type": "string",
@@ -94,8 +134,14 @@
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
 					},
+					"ADLSGen2_accountKey": {
+						"value": "[parameters('ADLSGen2_accountKey')]"
+					},
 					"AdvwrkDB_password": {
 						"value": "[parameters('AdvwrkDB_password')]"
+					},
+					"AzureDataLakeStorage1_accountKey": {
+						"value": "[parameters('AzureDataLakeStorage1_accountKey')]"
 					},
 					"BlobStoreProd_connectionString": {
 						"value": "[parameters('BlobStoreProd_connectionString')]"
@@ -112,6 +158,15 @@
 					"Customerdataj_connectionString": {
 						"value": "[parameters('Customerdataj_connectionString')]"
 					},
+					"TaxiTripDbTs_password": {
+						"value": "[parameters('TaxiTripDbTs_password')]"
+					},
+					"ADLSTaxitrip_accountKey": {
+						"value": "[parameters('ADLSTaxitrip_accountKey')]"
+					},
+					"ADLSGen2_properties_typeProperties_url": {
+						"value": "[parameters('ADLSGen2_properties_typeProperties_url')]"
+					},
 					"AdvwrkDB_properties_typeProperties_server": {
 						"value": "[parameters('AdvwrkDB_properties_typeProperties_server')]"
 					},
@@ -120,6 +175,9 @@
 					},
 					"AdvwrkDB_properties_typeProperties_userName": {
 						"value": "[parameters('AdvwrkDB_properties_typeProperties_userName')]"
+					},
+					"AzureDataLakeStorage1_properties_typeProperties_url": {
+						"value": "[parameters('AzureDataLakeStorage1_properties_typeProperties_url')]"
 					},
 					"CusotmerDatawork_properties_typeProperties_server": {
 						"value": "[parameters('CusotmerDatawork_properties_typeProperties_server')]"
@@ -138,10 +196,42 @@
 					},
 					"CustomerDataWrk_properties_typeProperties_userName": {
 						"value": "[parameters('CustomerDataWrk_properties_typeProperties_userName')]"
+					},
+					"TaxiTripDbTs_properties_typeProperties_server": {
+						"value": "[parameters('TaxiTripDbTs_properties_typeProperties_server')]"
+					},
+					"TaxiTripDbTs_properties_typeProperties_database": {
+						"value": "[parameters('TaxiTripDbTs_properties_typeProperties_database')]"
+					},
+					"TaxiTripDbTs_properties_typeProperties_userName": {
+						"value": "[parameters('TaxiTripDbTs_properties_typeProperties_userName')]"
+					},
+					"ADLSTaxitrip_properties_typeProperties_url": {
+						"value": "[parameters('ADLSTaxitrip_properties_typeProperties_url')]"
 					}
 				}
 			},
 			"dependsOn": []
+		},
+		{
+			"name": "ADF-TS-RG_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'ADF-TS-RG_ArmTemplate_0')]"
+			]
 		}
 	]
 }
