@@ -12,7 +12,15 @@
 					"name": "FlipkartStreamData"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "FlipkartPqt",
+						"type": "DatasetReference"
+					},
+					"name": "FlipKartdatasink"
+				}
+			],
 			"transformations": [
 				{
 					"name": "FilterLowFlipkartProd"
@@ -43,12 +51,18 @@
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> FlipkartStreamData",
+				"     ignoreNoFilesFound: false,",
+				"     wildcardPaths:['Flipkart.csv']) ~> FlipkartStreamData",
 				"FlipkartStreamData filter(toInteger(noreviews1) >= 10 && toInteger(norating1) >= 10\r",
 				") ~> FilterLowFlipkartProd",
 				"FilterLowFlipkartProd derive(positive_review_ratio = toString(toFloat(star_5f) / toFloat(norating1))\r",
 				") ~> AddPositiveRatio",
-				"AddPositiveRatio derive(Total_Stars = star_1f + star_2f + star_3f + star_4f + star_5f) ~> AddTotalStars"
+				"AddPositiveRatio derive(Total_Stars = star_1f + star_2f + star_3f + star_4f + star_5f) ~> AddTotalStars",
+				"AddTotalStars sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     format: 'parquet',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> FlipKartdatasink"
 			]
 		}
 	}
