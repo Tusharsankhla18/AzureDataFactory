@@ -59,6 +59,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'TaxiTripDbTs'"
 		},
+		"ABSFKPQT_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'ABSFKPQT'"
+		},
 		"ADLSGen2_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://adftusharsa.dfs.core.windows.net/"
@@ -440,8 +444,7 @@
 								"storeSettings": {
 									"type": "AzureBlobStorageReadSettings",
 									"recursive": true,
-									"wildcardFolderPath": "input",
-									"wildcardFileName": "*Flipkart.csv",
+									"wildcardFileName": "*.csv",
 									"enablePartitionDiscovery": false
 								},
 								"formatSettings": {
@@ -477,7 +480,7 @@
 						],
 						"outputs": [
 							{
-								"referenceName": "FlipkartPqt",
+								"referenceName": "flipkartdatapqt",
 								"type": "DatasetReference",
 								"parameters": {}
 							}
@@ -528,7 +531,7 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/Flipkartdata')]",
-				"[concat(variables('factoryId'), '/datasets/FlipkartPqt')]",
+				"[concat(variables('factoryId'), '/datasets/flipkartdatapqt')]",
 				"[concat(variables('factoryId'), '/dataflows/FlipkartDataFlow')]"
 			]
 		},
@@ -1933,6 +1936,44 @@
 				"[concat(variables('factoryId'), '/datasets/tripdatacsv')]",
 				"[concat(variables('factoryId'), '/datasets/TripDataTableTs')]",
 				"[concat(variables('factoryId'), '/datasets/TripAggregatecsv')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ABSFKPQT')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobStorage",
+				"typeProperties": {
+					"connectionString": "[parameters('ABSFKPQT_connectionString')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/flipkartdatapqt')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ABSFKPQT",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Parquet",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "FlipkartUpdatedData.parquet",
+						"container": "fkoutput"
+					},
+					"compressionCodec": "snappy"
+				},
+				"schema": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ABSFKPQT')]"
 			]
 		}
 	]

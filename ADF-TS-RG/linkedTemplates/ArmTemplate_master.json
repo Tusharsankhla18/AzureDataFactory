@@ -59,6 +59,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'TaxiTripDbTs'"
 		},
+		"ABSFKPQT_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'ABSFKPQT'"
+		},
 		"ADLSGen2_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://adftusharsa.dfs.core.windows.net/"
@@ -185,6 +189,9 @@
 					"TaxiTripDbTs_password": {
 						"value": "[parameters('TaxiTripDbTs_password')]"
 					},
+					"ABSFKPQT_connectionString": {
+						"value": "[parameters('ABSFKPQT_connectionString')]"
+					},
 					"ADLSGen2_properties_typeProperties_url": {
 						"value": "[parameters('ADLSGen2_properties_typeProperties_url')]"
 					},
@@ -252,6 +259,26 @@
 			},
 			"dependsOn": [
 				"[resourceId('Microsoft.Resources/deployments', 'ADF-TS-RG_ArmTemplate_0')]"
+			]
+		},
+		{
+			"name": "ADF-TS-RG_ArmTemplate_2",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_2.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'ADF-TS-RG_ArmTemplate_1')]"
 			]
 		}
 	]
