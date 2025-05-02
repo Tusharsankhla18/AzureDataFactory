@@ -7,6 +7,18 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "ADF-TS-RG"
 		},
+		"ABSFlipkart_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'ABSFlipkart'"
+		},
+		"ABSFlipkartdata_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'ABSFlipkartdata'"
+		},
+		"ABSTRIPDATA_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'ABSTRIPDATA'"
+		},
 		"ADLSGen2_accountKey": {
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'ADLSGen2'"
@@ -46,10 +58,6 @@
 		"TaxiTripDbTs_password": {
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'TaxiTripDbTs'"
-		},
-		"ABSTRIPDATA_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'ABSTRIPDATA'"
 		},
 		"ADLSGen2_properties_typeProperties_url": {
 			"type": "string",
@@ -138,6 +146,15 @@
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
 					},
+					"ABSFlipkart_connectionString": {
+						"value": "[parameters('ABSFlipkart_connectionString')]"
+					},
+					"ABSFlipkartdata_connectionString": {
+						"value": "[parameters('ABSFlipkartdata_connectionString')]"
+					},
+					"ABSTRIPDATA_connectionString": {
+						"value": "[parameters('ABSTRIPDATA_connectionString')]"
+					},
 					"ADLSGen2_accountKey": {
 						"value": "[parameters('ADLSGen2_accountKey')]"
 					},
@@ -167,9 +184,6 @@
 					},
 					"TaxiTripDbTs_password": {
 						"value": "[parameters('TaxiTripDbTs_password')]"
-					},
-					"ABSTRIPDATA_connectionString": {
-						"value": "[parameters('ABSTRIPDATA_connectionString')]"
 					},
 					"ADLSGen2_properties_typeProperties_url": {
 						"value": "[parameters('ADLSGen2_properties_typeProperties_url')]"

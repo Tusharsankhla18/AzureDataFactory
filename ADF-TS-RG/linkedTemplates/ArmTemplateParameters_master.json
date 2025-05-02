@@ -5,6 +5,15 @@
 		"factoryName": {
 			"value": "ADF-TS-RG"
 		},
+		"ABSFlipkart_connectionString": {
+			"value": ""
+		},
+		"ABSFlipkartdata_connectionString": {
+			"value": ""
+		},
+		"ABSTRIPDATA_connectionString": {
+			"value": ""
+		},
 		"ADLSGen2_accountKey": {
 			"value": ""
 		},
@@ -33,9 +42,6 @@
 			"value": ""
 		},
 		"TaxiTripDbTs_password": {
-			"value": ""
-		},
-		"ABSTRIPDATA_connectionString": {
 			"value": ""
 		},
 		"ADLSGen2_properties_typeProperties_url": {
