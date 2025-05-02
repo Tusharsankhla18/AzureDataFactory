@@ -264,6 +264,44 @@
 								"parameters": {}
 							}
 						]
+					},
+					{
+						"name": "dftripdataTs",
+						"type": "ExecuteDataFlow",
+						"dependsOn": [
+							{
+								"activity": "Copy TripDataTs",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"dataflow": {
+								"referenceName": "dftripdataTs",
+								"type": "DataFlowReference",
+								"parameters": {},
+								"datasetParameters": {
+									"TripDataCsv": {},
+									"TripFareTableTs": {},
+									"TripAggregateSink": {}
+								}
+							},
+							"staging": {},
+							"compute": {
+								"coreCount": 8,
+								"computeType": "General"
+							},
+							"traceLevel": "Fine"
+						}
 					}
 				],
 				"policy": {
@@ -273,7 +311,8 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/TripDataTableTs')]",
-				"[concat(variables('factoryId'), '/datasets/tripdatacsv')]"
+				"[concat(variables('factoryId'), '/datasets/tripdatacsv')]",
+				"[concat(variables('factoryId'), '/dataflows/dftripdataTs')]"
 			]
 		},
 		{
