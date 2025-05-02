@@ -8,6 +8,9 @@
 		"ADLSGen2_accountKey": {
 			"value": ""
 		},
+		"ADLSTaxitrip_accountKey": {
+			"value": ""
+		},
 		"AdvwrkDB_password": {
 			"value": ""
 		},
@@ -32,11 +35,14 @@
 		"TaxiTripDbTs_password": {
 			"value": ""
 		},
-		"ADLSTaxitrip_accountKey": {
+		"ABSTRIPDATA_connectionString": {
 			"value": ""
 		},
 		"ADLSGen2_properties_typeProperties_url": {
 			"value": "https://adftusharsa.dfs.core.windows.net/"
+		},
+		"ADLSTaxitrip_properties_typeProperties_url": {
+			"value": "https://tstmstorageacc18.dfs.core.windows.net/"
 		},
 		"AdvwrkDB_properties_typeProperties_server": {
 			"value": "adftusharserver.database.windows.net"
@@ -76,9 +82,6 @@
 		},
 		"TaxiTripDbTs_properties_typeProperties_userName": {
 			"value": "Tusharadf"
-		},
-		"ADLSTaxitrip_properties_typeProperties_url": {
-			"value": "https://tstmstorageacc18.dfs.core.windows.net/"
 		},
 		"containerUri": {
 			"value": ""

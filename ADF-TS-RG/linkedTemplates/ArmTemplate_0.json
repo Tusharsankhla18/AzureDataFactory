@@ -11,6 +11,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'ADLSGen2'"
 		},
+		"ADLSTaxitrip_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'ADLSTaxitrip'"
+		},
 		"AdvwrkDB_password": {
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'AdvwrkDB'"
@@ -43,13 +47,17 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'TaxiTripDbTs'"
 		},
-		"ADLSTaxitrip_accountKey": {
+		"ABSTRIPDATA_connectionString": {
 			"type": "secureString",
-			"metadata": "Secure string for 'accountKey' of 'ADLSTaxitrip'"
+			"metadata": "Secure string for 'connectionString' of 'ABSTRIPDATA'"
 		},
 		"ADLSGen2_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://adftusharsa.dfs.core.windows.net/"
+		},
+		"ADLSTaxitrip_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://tstmstorageacc18.dfs.core.windows.net/"
 		},
 		"AdvwrkDB_properties_typeProperties_server": {
 			"type": "string",
@@ -102,10 +110,6 @@
 		"TaxiTripDbTs_properties_typeProperties_userName": {
 			"type": "string",
 			"defaultValue": "Tusharadf"
-		},
-		"ADLSTaxitrip_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://tstmstorageacc18.dfs.core.windows.net/"
 		}
 	},
 	"variables": {
@@ -156,6 +160,23 @@
 					"accountKey": {
 						"type": "SecureString",
 						"value": "[parameters('ADLSGen2_accountKey')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ADLSTaxitrip')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobFS",
+				"typeProperties": {
+					"url": "[parameters('ADLSTaxitrip_properties_typeProperties_url')]",
+					"accountKey": {
+						"type": "SecureString",
+						"value": "[parameters('ADLSTaxitrip_accountKey')]"
 					}
 				}
 			},
@@ -306,18 +327,14 @@
 			"dependsOn": []
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/ADLSTaxitrip')]",
+			"name": "[concat(parameters('factoryName'), '/ABSTRIPDATA')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"annotations": [],
-				"type": "AzureBlobFS",
+				"type": "AzureBlobStorage",
 				"typeProperties": {
-					"url": "[parameters('ADLSTaxitrip_properties_typeProperties_url')]",
-					"accountKey": {
-						"type": "SecureString",
-						"value": "[parameters('ADLSTaxitrip_accountKey')]"
-					}
+					"connectionString": "[parameters('ABSTRIPDATA_connectionString')]"
 				}
 			},
 			"dependsOn": []
@@ -674,29 +691,6 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/customerdata')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "Customerdataj",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "Json",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobStorageLocation",
-						"container": "customer"
-					}
-				},
-				"schema": {}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/Customerdataj')]"
-			]
-		},
-		{
 			"name": "[concat(parameters('factoryName'), '/TripDataTableTs')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -767,7 +761,7 @@
 				],
 				"typeProperties": {
 					"schema": "dbo",
-					"table": "TripData"
+					"table": "TripFares"
 				}
 			},
 			"dependsOn": [
