@@ -56,6 +56,9 @@
 		"TaxiTripDbTs_password": {
 			"value": ""
 		},
+		"AzureLookupBlob_connectionString": {
+			"value": ""
+		},
 		"ADLSGen2_properties_typeProperties_url": {
 			"value": "https://adftusharsa.dfs.core.windows.net/"
 		},

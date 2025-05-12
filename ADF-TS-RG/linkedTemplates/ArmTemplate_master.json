@@ -75,6 +75,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'TaxiTripDbTs'"
 		},
+		"AzureLookupBlob_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureLookupBlob'"
+		},
 		"ADLSGen2_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://adftusharsa.dfs.core.windows.net/"
@@ -224,6 +228,9 @@
 					},
 					"TaxiTripDbTs_password": {
 						"value": "[parameters('TaxiTripDbTs_password')]"
+					},
+					"AzureLookupBlob_connectionString": {
+						"value": "[parameters('AzureLookupBlob_connectionString')]"
 					},
 					"ADLSGen2_properties_typeProperties_url": {
 						"value": "[parameters('ADLSGen2_properties_typeProperties_url')]"
